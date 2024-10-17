@@ -100,9 +100,26 @@ public:
 };
 
 int main() {
-  long long int program = 0;
-  SingleNumCoding test = SingleNumCoding(27);
-  std::cout << test.getX() << " " << test.getY() << std::endl;
+  long long int program = 786432;
+  ListNumCoding test = ListNumCoding(program);
+  std::vector<int> nums = test.getNums();
+  for (int i : nums) {
+    if (i == 0) {
+      std::cout << "HALT" << std::endl;
+      continue;
+    }
+
+    DoubleNumCoding x = DoubleNumCoding(i);
+
+    if (x.getX() % 2 == 0) {
+      std::cout << "R" << x.getX() / 2 << "+ -> L" << x.getY() << std::endl;
+    } else {
+      SingleNumCoding label = SingleNumCoding(x.getY());
+      std::cout << "R" << (x.getX() - 1) / 2 << "- -> L" << label.getX() << ", L" << label.getY() << std::endl;
+    }
+  }
+
+
 
   return 0;
 }
