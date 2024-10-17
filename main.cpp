@@ -42,6 +42,8 @@ public:
   }
 
   DoubleNumCoding(int num): x(0), y(0) {
+    if (num == 0)
+      throw std::runtime_error("Invalid number");
     while ((num & 0b1) == 0) {
       num = num >> 1;
       this->x++;
