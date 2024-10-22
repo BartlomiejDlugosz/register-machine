@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector>
 
+/* Representation of a {x, y} pair in the form of a single number
+ * x is the number of 1s before the first 0
+ * y is the number after the first 0
+ * The number is represented as 2^x * (2y + 1) - 1
+ */
 class SingleNumCoding {
 private:
   int x;
@@ -30,6 +35,11 @@ public:
   int getY() { return y; }
 };
 
+/* Representation of a {x, y} pair in the form of a single number
+ * x is the number of 0s before the first 1
+ * y is the number after the first 1
+ * The number is represented as 2^x * (2y + 1)
+ */
 class DoubleNumCoding {
 private:
   int x;
@@ -61,6 +71,9 @@ public:
   int getY() { return y; }
 };
 
+/* Representation of a list of numbers in the form of a single number
+ * Each number in the list is represented by the number of consecutive 0s before the first 1
+ */
 class ListNumCoding {
 private:
   std::vector<int> nums;
@@ -83,9 +96,6 @@ public:
 
   int num() {
     int res = 0;
-    // res = 1 << nums[0];
-    // res = 1 << nums[1] << nums[0];
-    // res = 1 << nums[2] << nums[1] << nums[0];
     for (int i = 0; i < nums.size(); i++) {
       int new_num = 1 << nums[i];
       for (int j = 0; j < i; j++) {
