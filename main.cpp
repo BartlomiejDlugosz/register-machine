@@ -121,7 +121,7 @@ public:
   int reg;
   int lbl1;
   int lbl2;
-public:
+
   Instruction() {
     this->type = Type::HALT;
   }
